@@ -2,24 +2,24 @@ package com.mycompany.gpacalculation;
 
 import java.util.ArrayList;
 
-public class Calculator {
-    private static Calculator onlyInstance = null;
+public class GPACalculator {
+    private static GPACalculator onlyInstance = null;
     private int totalCredit;
     private double totalGradePoint;
     private double gpa;
 
-    private Calculator()
+    private GPACalculator()
     {
         totalCredit = 0;
         totalGradePoint = 0.0;
         gpa = 0.0;
     }
 
-    public static Calculator getInstance()
+    public static GPACalculator getInstance()
     {
         if (onlyInstance == null)
         {
-            onlyInstance = new Calculator();
+            onlyInstance = new GPACalculator();
         }
         return onlyInstance;
     }
