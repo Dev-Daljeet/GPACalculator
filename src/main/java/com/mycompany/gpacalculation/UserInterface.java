@@ -13,3 +13,4 @@ public class UserInterface {
         System.out.printf("Your GPA is %.2f",calculator.calculateGPA(courseList));
     }
 }
+
