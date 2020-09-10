@@ -30,6 +30,20 @@ class GPACalculatorTest {
     }
 
     @Test
+    public void exceptionForNumOfCoursesShouldBEThrown() {
+        CourseList courseList = new CourseList();
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            courseList.addCourse(-4);                // Negative or Invalid number of courses
+        });
+
+        String result = exception.getMessage();
+        String expResult = "Invalid number of courses";
+
+        assertEquals(expResult,result);
+    }
+
+    @Test
     public void exceptionForGradeShouldBEThrown() {
         ArrayList<Course> courseList = new ArrayList<>();
         String[] gradeArray = {"X","Y","Z"};       // Invalid Grade
