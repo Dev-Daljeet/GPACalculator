@@ -1,16 +1,31 @@
 package com.mycompany.gpacalculation;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UserInterface {
-    public static void main(String[] args) {
+/** Represents the User Interface of an application.
+ * @author Daljeet Singh (Dev-Daljeet)
+ * @version 1.0
+ */
+public class UserInterface
+{
+    /** Runs the program or starting point of execution.
+     * @param args Command-line arguments
+     */
+    public static void main(String[] args)
+    {
         Scanner input = new Scanner(System.in);
         System.out.println("Hello!\nPlease enter the number of courses for which you want to calculate GPA");
         int numOfCourses = input.nextInt();
-        ArrayList<Course> courseList = new CourseList().addCourse(numOfCourses);
+        CourseList courseList = new CourseList();
         GPACalculator calculator = GPACalculator.getInstance();
-        System.out.printf("Your GPA is %.2f",calculator.calculateGPA(courseList));
+        try {
+            courseList.addCourse(numOfCourses);
+            System.out.printf("Your GPA is %.2f",calculator.calculateGPA(courseList.getCourseList()));
+        }
+        catch (IllegalArgumentException exception)
+        {
+            System.out.println("Exception thrown: "+exception);
+        }
     }
 }
 

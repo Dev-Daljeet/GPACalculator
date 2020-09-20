@@ -2,19 +2,21 @@ package com.mycompany.gpacalculation;
 
 import java.util.ArrayList;
 
+/** Represents the GPA calculator which calculates GPA of entered courses.
+ * (Note: The Singleton pattern has been applied on this class.)
+ */
 public class GPACalculator {
     private static GPACalculator onlyInstance = null;
-    private int totalCredit;
-    private double totalGradePoint;
-    private double gpa;
 
+    /** No-arg constructor to make instances of class.
+     */
     private GPACalculator()
     {
-        totalCredit = 0;
-        totalGradePoint = 0.0;
-        gpa = 0.0;
     }
 
+    /** Allocates the memory to an instance of class and returns it.
+     * @return onlyInstance An one and only instance of class.
+     */
     public static GPACalculator getInstance()
     {
         if (onlyInstance == null)
@@ -24,8 +26,16 @@ public class GPACalculator {
         return onlyInstance;
     }
 
+    /** Calculates the GPA of courses.
+     * @param courseList An array list containing the courses.
+     * @return gpa A double representing the GPA.
+     * @throws IllegalArgumentException if grade is invalid or credit is invalid.
+     */
     public double calculateGPA(ArrayList<Course> courseList)
     {
+        int totalCredit = 0;
+        double totalGradePoint = 0.0;
+        double gpa;
         for(Course i: courseList) {
             if (i.getCredit() > 0) {
                 totalCredit += i.getCredit();

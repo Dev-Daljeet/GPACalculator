@@ -1,15 +1,19 @@
 package com.mycompany.gpacalculation;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+/** Tests the class GPACalculator.
+ * @author Daljeet Singh
+ * @version 1.0
+ */
 class GPACalculatorTest {
 
     private GPACalculator calculator = GPACalculator.getInstance();
 
+    /** Tests the calculateGPA() method. Test will pass if GPA is calculated accurately by the calculateGPA() method.
+     */
     @Test
     public void gpaShouldBeCalculated() {
         ArrayList<Course> courseList = new ArrayList<>();
@@ -29,20 +33,8 @@ class GPACalculatorTest {
         assertEquals(expResult,result);
     }
 
-    @Test
-    public void exceptionForNumOfCoursesShouldBEThrown() {
-        CourseList courseList = new CourseList();
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            courseList.addCourse(-4);                // Negative or Invalid number of courses
-        });
-
-        String result = exception.getMessage();
-        String expResult = "Invalid number of courses";
-
-        assertEquals(expResult,result);
-    }
-
+    /** Tests the calculateGPA() method. Test will pass if exception for 'Invalid Grade' is thrown by the calculateGPA() method.
+     */
     @Test
     public void exceptionForGradeShouldBEThrown() {
         ArrayList<Course> courseList = new ArrayList<>();
@@ -66,6 +58,8 @@ class GPACalculatorTest {
         assertEquals(expResult,result);
     }
 
+    /** Tests the calculateGPA() method. Test will pass if exception for 'Invalid Credit' is thrown by the calculateGPA() method.
+     */
     @Test
     public void exceptionForCreditShouldBEThrown() {
         ArrayList<Course> courseList = new ArrayList<>();
